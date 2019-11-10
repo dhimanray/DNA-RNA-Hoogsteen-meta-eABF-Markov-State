@@ -4,7 +4,7 @@
 #do the same for gradient files
 #then run this script
 
-for i in {88..89}
+for i in {1..89}
 do
 	cp gradient$i gradient$i.grad
 	cp count$i gradient$i.count
@@ -13,7 +13,7 @@ do
 	awk 'NF' gradient$i.grad.pmf > pmf_${a}_ns
 done
 
-for j in {9078..9111}
+for j in {9001..9111}
 do
         i=$(( j-9000+90 ))
         cp gradient$j gradient$i.grad
