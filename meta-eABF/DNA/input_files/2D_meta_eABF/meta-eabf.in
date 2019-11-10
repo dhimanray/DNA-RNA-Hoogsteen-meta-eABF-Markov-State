@@ -1,0 +1,81 @@
+colvarsTrajFrequency      50
+colvarsRestartFrequency  10000
+
+
+colvar {
+   name chi
+   
+   extendedlagrangian on
+   subtractappliedforce on
+   extendedTemp 298
+   extendedFluctuation  5.0
+   extendedTimeConstant   200
+   outputAppliedForce on
+
+   width 5.0
+   lowerboundary   -180.0
+   upperboundary    180.0
+
+   lowerwallconstant 0.0
+   upperwallconstant 0.0
+
+   dihedral {
+      group1 { atomNumbers 483 }
+      group2 { atomNumbers 484 }
+      group3 { atomNumbers 486 }
+      group4 { atomNumbers 495 }
+                }
+}
+
+colvar {
+   name theta
+
+   extendedlagrangian on
+   subtractappliedforce on
+   extendedTemp 298
+   extendedFluctuation  5.0
+   extendedTimeConstant   200
+   outputAppliedForce on
+
+   width 5.0
+   lowerboundary   -180.0
+   upperboundary    180.0
+
+   lowerwallconstant 0.0
+   upperwallconstant 0.0
+
+   dihedral {
+      group1 {
+         atomNumbersRange 234-247
+         atomNumbersRange 298-312
+         atomNumbersRange 456-467
+         atomNumbersRange 518-531
+      }
+      group2 {
+         atomNumbersRange 505-509
+      }
+      group3 {
+         atomNumbersRange 473-477
+      }
+      group4 {
+         atomNumbers {
+             495 487 488 486 489 490
+         }
+      }
+   }
+}
+
+abf {
+      colvars chi theta
+      fullSamples 1000
+      historyFreq 1000000
+      writeCZARwindowFile on
+}
+
+metadynamics {
+      colvars chi theta
+      hillWeight 0.06
+      hillWidth 3.0
+}
+
+
