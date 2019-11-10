@@ -1,6 +1,6 @@
 #:/bin/bash
 
-for i in {6..45}
+for i in {1..45}
 do
 	cp cartesian-traj.py ../MSM_trajectory_$i
 	cd ../MSM_trajectory_$i
